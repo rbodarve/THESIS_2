@@ -1,0 +1,38 @@
+LSTM Tagalog NSFW Detection Model Evaluation
+======================================================================
+
+Model Architecture: LSTM
+Task: Binary Classification (Safe vs NSFW)
+Evaluation Set: Validation
+
+Calibration:
+----------------------------------------------------------------------
+Optimized Threshold: 0.5000 (Tuned on Validation)
+Target Metric:      Max F1 (NSFW)
+----------------------------------------------------------------------
+
+Key Metrics (Validation):
+----------------------------------------------------------------------
+Overall Accuracy:   0.9104
+Macro Precision:    0.9122
+Macro Recall:       0.9068
+Macro F1-Score:     0.9089
+NSFW F1-Score:      0.8971
+AUROC:              0.9563
+PR-AUC (AUPRC):     0.9604
+----------------------------------------------------------------------
+
+Classification Report:
+              precision    recall  f1-score   support
+
+        Safe     0.9006    0.9416    0.9206       462
+        NSFW     0.9237    0.8720    0.8971       375
+
+    accuracy                         0.9104       837
+   macro avg     0.9122    0.9068    0.9089       837
+weighted avg     0.9110    0.9104    0.9101       837
+
+
+Confusion Matrix:
+[[435  27]
+ [ 48 327]]

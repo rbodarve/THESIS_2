@@ -1,0 +1,38 @@
+BiBiLSTM Tagalog NSFW Detection Model Evaluation
+======================================================================
+
+Model Architecture: Bidirectional LSTM
+Task: Binary Classification (Safe vs NSFW)
+Evaluation Set: Validation
+
+Calibration:
+----------------------------------------------------------------------
+Optimized Threshold: 0.5000 (Tuned on Validation)
+Target Metric:      Max F1 (NSFW)
+----------------------------------------------------------------------
+
+Key Metrics (Validation):
+----------------------------------------------------------------------
+Overall Accuracy:   0.9068
+Macro Precision:    0.9123
+Macro Recall:       0.9010
+Macro F1-Score:     0.9047
+NSFW F1-Score:      0.8904
+AUROC:              0.9534
+PR-AUC (AUPRC):     0.9601
+----------------------------------------------------------------------
+
+Classification Report:
+              precision    recall  f1-score   support
+
+        Safe     0.8840    0.9567    0.9189       462
+        NSFW     0.9407    0.8453    0.8904       375
+
+    accuracy                         0.9068       837
+   macro avg     0.9123    0.9010    0.9047       837
+weighted avg     0.9094    0.9068    0.9062       837
+
+
+Confusion Matrix:
+[[442  20]
+ [ 58 317]]

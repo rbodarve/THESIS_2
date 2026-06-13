@@ -1,0 +1,64 @@
+# ============================================================
+# THESIS_2 — Python / ML (NLP + Computer Vision) workspace
+# ============================================================
+
+# ---------- Datasets & archives (large, re-downloadable — keep OUT of git) ----------
+# Roboflow COCO exports and any other archives. This is what bloated the repo.
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+erotica detection*.coco*/
+datasets/
+data/raw/
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# ---------- Virtual environments ----------
+.venv/
+venv/
+env/
+ENV/
+
+# ---------- Secrets / credentials ----------
+.env
+.env.*
+*.pem
+*.key
+*_credentials.json
+service_account*.json
+
+# ---------- OS / editor cruft ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+*.swp
+.idea/
+.vscode/
+
+# ---------- NOT part of the thesis ----------
+# Windows-reinstall guides (also contain an ngrok token — must never reach GitHub)
+WINDOWS_REINSTALL/
+RST-driver/
+
+# ---------- Claude Code local files ----------
+.claude/
+
+# NOTE: trained models (*.h5, *.keras, *.tflite, *.pickle) and result CSVs are
+# intentionally NOT ignored — you have been committing those as thesis outputs.
+# Add a rule here later if you decide to keep them out.

@@ -1,0 +1,9 @@
+{
+    "model_version": "1.0.0",
+    "decision_threshold": 0.5,
+    "max_sequence_length": 64,
+    "vocab_size": 10000,
+    "embedding_dim": 64,
+    "lstm_units": 64,
+    "dense_units": 64
+}

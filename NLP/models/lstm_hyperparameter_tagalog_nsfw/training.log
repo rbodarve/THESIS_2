@@ -1,0 +1,287 @@
+2026-06-11 07:03:57,605 - Logging to file: models/lstm_hyperparameter_tagalog_nsfw/training.log
+2026-06-11 07:03:57,610 - 
+======================================================================
+2026-06-11 07:03:57,613 - MODEL CONFIGURATION
+2026-06-11 07:03:57,616 - ======================================================================
+2026-06-11 07:03:57,619 - Model Version: 1.0.0
+2026-06-11 07:03:57,622 - Batch Size: 64
+2026-06-11 07:03:57,625 - Embedding Dimension: 64
+2026-06-11 07:03:57,627 - LSTM Units: 64
+2026-06-11 07:03:57,629 - Dense Units: 64
+2026-06-11 07:03:57,632 - Max Sequence Length: 64
+2026-06-11 07:03:57,636 - Vocabulary Size: 10000
+2026-06-11 07:03:57,638 - Epochs: 20
+2026-06-11 07:03:57,640 - Dropout Rate: 0.5
+2026-06-11 07:03:57,645 - Learning Rate: 0.001
+2026-06-11 07:03:57,647 - Validation Split: 0.15
+2026-06-11 07:03:57,650 - Test Split: 0.15
+2026-06-11 07:03:57,653 - 
+======================================================================
+2026-06-11 07:03:57,654 - STEP 1: DATA PREPARATION
+2026-06-11 07:03:57,656 - ======================================================================
+2026-06-11 07:03:57,660 - Loading dataset from cleaned_data.csv...
+2026-06-11 07:03:57,697 - Dataset loaded successfully. Shape: (5579, 2)
+2026-06-11 07:03:57,728 - Mapping text labels (safe/nsfw) to binary integers...
+2026-06-11 07:03:57,742 - Dataset validation complete. Clean shape: (5579, 2)
+2026-06-11 07:03:57,761 - Label distribution:
+label
+0    3079
+1    2500
+Name: count, dtype: int64
+2026-06-11 07:03:57,797 - Preprocessing data with Augmentation...
+2026-06-11 07:03:57,807 - Training samples: 3905
+2026-06-11 07:03:57,808 - Validation samples: 837
+2026-06-11 07:03:57,809 - Test samples: 837
+2026-06-11 07:03:57,810 - Augmentation disabled (dataset is near-balanced)...
+2026-06-11 07:03:57,827 - Augmented Training samples: 3905
+2026-06-11 07:03:57,828 - Normalizing text...
+2026-06-11 07:03:58,178 - Vocabulary size: 5443
+2026-06-11 07:03:58,179 - Sequence shape: (3905, 64)
+2026-06-11 07:03:58,182 - Data preparation complete.
+2026-06-11 07:03:58,184 - 
+======================================================================
+2026-06-11 07:03:58,185 - STEP 2: MODEL BUILDING
+2026-06-11 07:03:58,186 - ======================================================================
+2026-06-11 07:03:58,187 - 
+======================================================================
+2026-06-11 07:03:58,189 - STARTING HYPERPARAMETER OPTIMIZATION
+2026-06-11 07:03:58,190 - ======================================================================
+2026-06-11 07:03:59,973 - Note: Using existing tuner state if available.
+2026-06-11 07:03:59,978 - Starting Tuner Search...
+2026-06-11 07:06:44,206 - Saving HPO trials to CSV...
+2026-06-11 07:06:44,216 - HPO trials saved to tuning_results/hpo_trials.csv
+2026-06-11 07:06:44,225 - Top 5 Trials:
+  trial_id     status     score  best_step  dropout        lr  weight_decay  \
+1       01  COMPLETED  0.908005          2      0.3  0.004820      0.000125   
+7       07  COMPLETED  0.905615          7      0.5  0.001217      0.000365   
+5       05  COMPLETED  0.903226          9      0.4  0.000274      0.000124   
+6       06  COMPLETED  0.881720          9      0.3  0.000213      0.000026   
+9       09  COMPLETED  0.878136          9      0.4  0.000123      0.000060   
+
+   beta_1  batch_size  
+1    0.86          32  
+7    0.93         128  
+5    0.80          32  
+6    0.88          32  
+9    0.85          32  
+2026-06-11 07:06:44,227 - 
+======================================================================
+2026-06-11 07:06:44,229 - BEST HYPERPARAMETERS
+2026-06-11 07:06:44,231 - ======================================================================
+2026-06-11 07:06:44,232 - dropout: 0.30000000000000004
+2026-06-11 07:06:44,233 - lr: 0.004819636965413148
+2026-06-11 07:06:44,234 - weight_decay: 0.00012481266810496076
+2026-06-11 07:06:44,236 - beta_1: 0.8600000000000001
+2026-06-11 07:06:44,237 - batch_size: 32
+2026-06-11 07:06:44,240 - Updated Config for Training: Batch Size=32, LR=0.004820, Dropout=0.30000000000000004
+2026-06-11 07:06:44,241 - Building final model with optimized hyperparameters...
+2026-06-11 07:06:44,274 - 
+======================================================================
+2026-06-11 07:06:44,276 - STEP 3: TRAINING
+2026-06-11 07:06:44,277 - ======================================================================
+2026-06-11 07:06:44,278 - 
+Starting model training...
+2026-06-11 07:06:58,551 - 
+Model saved to models/lstm_hyperparameter_tagalog_nsfw
+2026-06-11 07:06:58,555 - Training history saved to models/lstm_hyperparameter_tagalog_nsfw/training_history.csv
+2026-06-11 07:06:58,559 - 
+======================================================================
+2026-06-11 07:06:58,560 - STEP 4: EVALUATION (VALIDATION SET)
+2026-06-11 07:06:58,563 - ======================================================================
+2026-06-11 07:06:58,566 - 
+Evaluating model...
+2026-06-11 07:06:58,570 - Tuning decision threshold on Validation Set...
+2026-06-11 07:06:59,071 - Optimal Threshold: 0.5000 (tuned 0.57->F1 0.9025 vs 0.50->F1 0.8956)
+2026-06-11 07:06:59,073 - Validation NSFW F1: 0.8956
+2026-06-11 07:06:59,074 - Calculating final metrics on Validation Set...
+2026-06-11 07:06:59,253 - Validation metrics saved to models/lstm_hyperparameter_tagalog_nsfw/validation_metrics.csv
+2026-06-11 07:06:59,264 - Validation classification report saved to models/lstm_hyperparameter_tagalog_nsfw/validation_classification_report.csv
+2026-06-11 07:06:59,268 - Validation predictions saved to models/lstm_hyperparameter_tagalog_nsfw/validation_predictions.csv
+2026-06-11 07:06:59,270 - Validation Accuracy: 0.9092
+2026-06-11 07:06:59,271 - Validation Macro F1-Score: 0.9076
+2026-06-11 07:06:59,272 - Metrics saved to models/lstm_hyperparameter_tagalog_nsfw/validation_evaluation_metrics.txt
+2026-06-11 07:06:59,498 - Confusion matrix saved to models/lstm_hyperparameter_tagalog_nsfw/validation_confusion_matrix.png
+2026-06-11 07:06:59,500 - Final validation accuracy: 0.9092
+2026-06-11 07:06:59,503 - 
+======================================================================
+2026-06-11 07:06:59,505 - STEP 5: TEST SET EVALUATION
+2026-06-11 07:06:59,507 - ======================================================================
+2026-06-11 07:06:59,509 - 
+Evaluating model...
+2026-06-11 07:06:59,510 - Tuning decision threshold on Validation Set...
+2026-06-11 07:06:59,746 - Optimal Threshold: 0.5000 (tuned 0.57->F1 0.9025 vs 0.50->F1 0.8956)
+2026-06-11 07:06:59,748 - Validation NSFW F1: 0.8956
+2026-06-11 07:06:59,749 - Calculating final metrics on Test Set using optimal threshold...
+2026-06-11 07:06:59,920 - Test metrics saved to models/lstm_hyperparameter_tagalog_nsfw/test_metrics.csv
+2026-06-11 07:06:59,930 - Test classification report saved to models/lstm_hyperparameter_tagalog_nsfw/test_classification_report.csv
+2026-06-11 07:06:59,936 - Test predictions saved to models/lstm_hyperparameter_tagalog_nsfw/test_predictions.csv
+2026-06-11 07:06:59,938 - Test Accuracy: 0.8853
+2026-06-11 07:06:59,940 - Test Macro F1-Score: 0.8833
+2026-06-11 07:06:59,943 - Metrics saved to models/lstm_hyperparameter_tagalog_nsfw/test_evaluation_metrics.txt
+2026-06-11 07:07:00,109 - Confusion matrix saved to models/lstm_hyperparameter_tagalog_nsfw/test_confusion_matrix.png
+2026-06-11 07:07:00,111 - Final Test Set Accuracy: 0.8853
+2026-06-11 07:07:00,114 - 
+======================================================================
+2026-06-11 07:07:00,115 - STEP 6: EXPORT
+2026-06-11 07:07:00,118 - ======================================================================
+2026-06-11 07:07:00,436 - Training history saved to models/lstm_hyperparameter_tagalog_nsfw/training_history.png
+2026-06-11 07:07:00,439 - 
+Saving model artifacts...
+2026-06-11 07:07:00,449 - Tokenizer saved to models/lstm_hyperparameter_tagalog_nsfw/tokenizer.pickle
+2026-06-11 07:07:00,451 - Configuration saved to models/lstm_hyperparameter_tagalog_nsfw/config.json
+2026-06-11 07:07:00,453 - 
+Exporting to TensorFlow Lite...
+2026-06-11 07:07:01,590 - TFLite model saved to models/lstm_hyperparameter_tagalog_nsfw/model.tflite
+2026-06-11 07:07:01,592 - TFLite model size: 0.76 MB
+2026-06-11 07:07:01,595 - Pipeline complete. Artifacts in models/lstm_hyperparameter_tagalog_nsfw
+2026-06-11 07:07:01,597 - 
+Testing model inference...
+2026-06-11 07:07:01,688 - Inference Configuration:
+2026-06-11 07:07:01,691 -   Calibrated Threshold: 0.5000
+2026-06-11 07:07:01,693 -   Lenient Threshold: 0.2000
+2026-06-11 07:07:01,695 -   Standard Threshold: 0.5000
+2026-06-11 07:07:01,697 -   Strict Threshold: 0.8000
+2026-06-11 07:07:01,897 - ----------------------------------------
+2026-06-11 07:07:01,899 - Text: 'hanapin ang langgam excuse my hairy pit'
+2026-06-11 07:07:01,901 - Confidence Score: 0.0642
+2026-06-11 07:07:01,902 -   [Calibrated @ 0.50] -> Safe
+2026-06-11 07:07:01,904 -   [Lenient @ 0.20] -> Safe
+2026-06-11 07:07:01,905 -   [Standard @ 0.50] -> Safe
+2026-06-11 07:07:01,906 -   [Strict @ 0.80] -> Safe
+2026-06-11 07:07:01,982 - ----------------------------------------
+2026-06-11 07:07:01,983 - Text: 'she got fire ass'
+2026-06-11 07:07:01,984 - Confidence Score: 0.9497
+2026-06-11 07:07:01,986 -   [Calibrated @ 0.50] -> NSFW
+2026-06-11 07:07:01,987 -   [Lenient @ 0.20] -> NSFW
+2026-06-11 07:07:01,989 -   [Standard @ 0.50] -> NSFW
+2026-06-11 07:07:01,990 -   [Strict @ 0.80] -> NSFW
+2026-06-11 07:07:02,117 - ----------------------------------------
+2026-06-11 07:07:02,118 - Text: 'stress posting ulit kasi wym di pa rin ma balance na adjust ko naman na lahat'
+2026-06-11 07:07:02,121 - Confidence Score: 0.0695
+2026-06-11 07:07:02,122 -   [Calibrated @ 0.50] -> Safe
+2026-06-11 07:07:02,123 -   [Lenient @ 0.20] -> Safe
+2026-06-11 07:07:02,124 -   [Standard @ 0.50] -> Safe
+2026-06-11 07:07:02,127 -   [Strict @ 0.80] -> Safe
+2026-06-11 07:07:02,283 - ----------------------------------------
+2026-06-11 07:07:02,284 - Text: 'that bikini looks like its been painted on'
+2026-06-11 07:07:02,285 - Confidence Score: 0.0498
+2026-06-11 07:07:02,286 -   [Calibrated @ 0.50] -> Safe
+2026-06-11 07:07:02,288 -   [Lenient @ 0.20] -> Safe
+2026-06-11 07:07:02,291 -   [Standard @ 0.50] -> Safe
+2026-06-11 07:07:02,292 -   [Strict @ 0.80] -> Safe
+2026-06-11 07:07:02,406 - ----------------------------------------
+2026-06-11 07:07:02,407 - Text: 'heres sneak peek of bodyshots nsfw using the top posts np com bodyshots top sort top amp year of the year amazing he didnt hit me in the face this time im assuming people are happy about it imgur com ckurg jpg comments np com bodyshots comments kro hp amazing he didnt hit me in the face this timeim proud of this one he covered me good oc imgur com izhbc png comments np com bodyshots comments iq ddm proud of this one he covered me good oc pulling out to cum all over me redgifs com watch whichlikelyreynard comments np com bodyshots comments mhtjzd pulling out to cum all over me im bot beep boop downvote to remove contact me com message compose to sneakpeekbot info np com sneakpeekbot opt out np com sneakpeekbot comments wk blacklist ix'
+2026-06-11 07:07:02,408 - Confidence Score: 0.9393
+2026-06-11 07:07:02,409 -   [Calibrated @ 0.50] -> NSFW
+2026-06-11 07:07:02,410 -   [Lenient @ 0.20] -> NSFW
+2026-06-11 07:07:02,411 -   [Standard @ 0.50] -> NSFW
+2026-06-11 07:07:02,412 -   [Strict @ 0.80] -> NSFW
+2026-06-11 07:07:02,533 - ----------------------------------------
+2026-06-11 07:07:02,534 - Text: 'can taste please just drop have so much to spare'
+2026-06-11 07:07:02,535 - Confidence Score: 0.0975
+2026-06-11 07:07:02,538 -   [Calibrated @ 0.50] -> Safe
+2026-06-11 07:07:02,539 -   [Lenient @ 0.20] -> Safe
+2026-06-11 07:07:02,540 -   [Standard @ 0.50] -> Safe
+2026-06-11 07:07:02,541 -   [Strict @ 0.80] -> Safe
+2026-06-11 07:07:02,651 - ----------------------------------------
+2026-06-11 07:07:02,652 - Text: 'yesssssss tongue kiss deeply'
+2026-06-11 07:07:02,653 - Norm: 'yess tongue kiss deeply'
+2026-06-11 07:07:02,656 - Confidence Score: 0.9736
+2026-06-11 07:07:02,657 -   [Calibrated @ 0.50] -> NSFW
+2026-06-11 07:07:02,658 -   [Lenient @ 0.20] -> NSFW
+2026-06-11 07:07:02,659 -   [Standard @ 0.50] -> NSFW
+2026-06-11 07:07:02,660 -   [Strict @ 0.80] -> NSFW
+2026-06-11 07:07:02,797 - ----------------------------------------
+2026-06-11 07:07:02,798 - Text: 'perfect combination hot and slimy'
+2026-06-11 07:07:02,800 - Confidence Score: 0.9590
+2026-06-11 07:07:02,802 -   [Calibrated @ 0.50] -> NSFW
+2026-06-11 07:07:02,804 -   [Lenient @ 0.20] -> NSFW
+2026-06-11 07:07:02,806 -   [Standard @ 0.50] -> NSFW
+2026-06-11 07:07:02,808 -   [Strict @ 0.80] -> NSFW
+2026-06-11 07:07:02,963 - ----------------------------------------
+2026-06-11 07:07:02,964 - Text: 'if we reverse your statement we see why its not one we use for reasons of evidence for claim gt im one of the rare ones that got the procedure as an adult gt the prevalence of circumcision in na is partly to blame for this imo your circumstance is not generalizable it is as you said rare'
+2026-06-11 07:07:02,965 - Confidence Score: 0.1216
+2026-06-11 07:07:02,967 -   [Calibrated @ 0.50] -> Safe
+2026-06-11 07:07:02,968 -   [Lenient @ 0.20] -> Safe
+2026-06-11 07:07:02,969 -   [Standard @ 0.50] -> Safe
+2026-06-11 07:07:02,971 -   [Strict @ 0.80] -> Safe
+2026-06-11 07:07:03,072 - ----------------------------------------
+2026-06-11 07:07:03,078 - Text: 'wow amazing im down for that anyday hahaha'
+2026-06-11 07:07:03,080 - Confidence Score: 0.1045
+2026-06-11 07:07:03,083 -   [Calibrated @ 0.50] -> Safe
+2026-06-11 07:07:03,084 -   [Lenient @ 0.20] -> Safe
+2026-06-11 07:07:03,086 -   [Standard @ 0.50] -> Safe
+2026-06-11 07:07:03,090 -   [Strict @ 0.80] -> Safe
+2026-06-11 07:07:03,212 - ----------------------------------------
+2026-06-11 07:07:03,214 - Text: 'want to breed that bitch'
+2026-06-11 07:07:03,216 - Confidence Score: 0.9721
+2026-06-11 07:07:03,218 -   [Calibrated @ 0.50] -> NSFW
+2026-06-11 07:07:03,219 -   [Lenient @ 0.20] -> NSFW
+2026-06-11 07:07:03,220 -   [Standard @ 0.50] -> NSFW
+2026-06-11 07:07:03,222 -   [Strict @ 0.80] -> NSFW
+2026-06-11 07:07:03,366 - ----------------------------------------
+2026-06-11 07:07:03,369 - Text: 'looks into the camera for what concentrate on swallowing his cum gezzz'
+2026-06-11 07:07:03,372 - Norm: 'looks into the camera for what concentrate on swallowing his cum gezz'
+2026-06-11 07:07:03,373 - Confidence Score: 0.9541
+2026-06-11 07:07:03,375 -   [Calibrated @ 0.50] -> NSFW
+2026-06-11 07:07:03,377 -   [Lenient @ 0.20] -> NSFW
+2026-06-11 07:07:03,379 -   [Standard @ 0.50] -> NSFW
+2026-06-11 07:07:03,380 -   [Strict @ 0.80] -> NSFW
+2026-06-11 07:07:03,509 - ----------------------------------------
+2026-06-11 07:07:03,512 - Text: 'sarap mong maging puta'
+2026-06-11 07:07:03,515 - Confidence Score: 0.6041
+2026-06-11 07:07:03,516 -   [Calibrated @ 0.50] -> NSFW
+2026-06-11 07:07:03,520 -   [Lenient @ 0.20] -> NSFW
+2026-06-11 07:07:03,521 -   [Standard @ 0.50] -> NSFW
+2026-06-11 07:07:03,522 -   [Strict @ 0.80] -> Safe
+2026-06-11 07:07:03,639 - ----------------------------------------
+2026-06-11 07:07:03,640 - Text: 'grabeng puke yan sarap kainin'
+2026-06-11 07:07:03,641 - Confidence Score: 0.9514
+2026-06-11 07:07:03,643 -   [Calibrated @ 0.50] -> NSFW
+2026-06-11 07:07:03,645 -   [Lenient @ 0.20] -> NSFW
+2026-06-11 07:07:03,647 -   [Standard @ 0.50] -> NSFW
+2026-06-11 07:07:03,647 -   [Strict @ 0.80] -> NSFW
+2026-06-11 07:07:03,781 - ----------------------------------------
+2026-06-11 07:07:03,784 - Text: 'daming mag ddm sayo hahaha'
+2026-06-11 07:07:03,788 - Confidence Score: 0.6491
+2026-06-11 07:07:03,789 -   [Calibrated @ 0.50] -> NSFW
+2026-06-11 07:07:03,790 -   [Lenient @ 0.20] -> NSFW
+2026-06-11 07:07:03,791 -   [Standard @ 0.50] -> NSFW
+2026-06-11 07:07:03,793 -   [Strict @ 0.80] -> Safe
+2026-06-11 07:07:03,939 - ----------------------------------------
+2026-06-11 07:07:03,941 - Text: 'if youre into older guys ill pound your pussy'
+2026-06-11 07:07:03,943 - Confidence Score: 0.9532
+2026-06-11 07:07:03,945 -   [Calibrated @ 0.50] -> NSFW
+2026-06-11 07:07:03,948 -   [Lenient @ 0.20] -> NSFW
+2026-06-11 07:07:03,950 -   [Standard @ 0.50] -> NSFW
+2026-06-11 07:07:03,952 -   [Strict @ 0.80] -> NSFW
+2026-06-11 07:07:04,105 - ----------------------------------------
+2026-06-11 07:07:04,107 - Text: 'give you it everyday'
+2026-06-11 07:07:04,108 - Confidence Score: 0.1384
+2026-06-11 07:07:04,110 -   [Calibrated @ 0.50] -> Safe
+2026-06-11 07:07:04,113 -   [Lenient @ 0.20] -> Safe
+2026-06-11 07:07:04,117 -   [Standard @ 0.50] -> Safe
+2026-06-11 07:07:04,120 -   [Strict @ 0.80] -> Safe
+2026-06-11 07:07:04,259 - ----------------------------------------
+2026-06-11 07:07:04,262 - Text: 'that lot of cum only used to one load'
+2026-06-11 07:07:04,264 - Confidence Score: 0.9539
+2026-06-11 07:07:04,266 -   [Calibrated @ 0.50] -> NSFW
+2026-06-11 07:07:04,270 -   [Lenient @ 0.20] -> NSFW
+2026-06-11 07:07:04,272 -   [Standard @ 0.50] -> NSFW
+2026-06-11 07:07:04,274 -   [Strict @ 0.80] -> NSFW
+2026-06-11 07:07:04,419 - ----------------------------------------
+2026-06-11 07:07:04,422 - Text: 'can help you with that'
+2026-06-11 07:07:04,423 - Confidence Score: 0.0550
+2026-06-11 07:07:04,426 -   [Calibrated @ 0.50] -> Safe
+2026-06-11 07:07:04,428 -   [Lenient @ 0.20] -> Safe
+2026-06-11 07:07:04,429 -   [Standard @ 0.50] -> Safe
+2026-06-11 07:07:04,430 -   [Strict @ 0.80] -> Safe
+2026-06-11 07:07:04,563 - ----------------------------------------
+2026-06-11 07:07:04,565 - Text: 'your eyes are absolutely stunning'
+2026-06-11 07:07:04,566 - Confidence Score: 0.0713
+2026-06-11 07:07:04,567 -   [Calibrated @ 0.50] -> Safe
+2026-06-11 07:07:04,568 -   [Lenient @ 0.20] -> Safe
+2026-06-11 07:07:04,570 -   [Standard @ 0.50] -> Safe
+2026-06-11 07:07:04,571 -   [Strict @ 0.80] -> Safe
+2026-06-11 07:07:04,575 - 
+Inference results saved to models/lstm_hyperparameter_tagalog_nsfw/inference_results.csv
