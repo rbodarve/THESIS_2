@@ -50,6 +50,8 @@ desktop.ini
 *.swp
 .idea/
 .vscode/
+# WSL/Windows "mark of the web" alternate-data-stream files
+*:Zone.Identifier
 
 # ---------- NOT part of the thesis ----------
 # Windows-reinstall guides (also contain an ngrok token — must never reach GitHub)
