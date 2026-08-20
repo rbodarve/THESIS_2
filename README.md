@@ -78,6 +78,7 @@ THESIS_2/
     ├── yolov10n.ipynb / yolov10n(1).ipynb  # YOLOv10 (base + tuned)
     ├── yolov11{n,s}[-{320,640,768}].ipynb  # YOLOv11 scale/resolution sweep
     ├── yolov12n[-{320,640}].ipynb          # YOLOv12
+    ├── yolov26n.ipynb                      # YOLOv26
     ├── rf_detr_nano.ipynb / …_hyperparameters.ipynb
     ├── efficientdet.ipynb / …_hyperparameters.ipynb
     └── mobilenetssd_torch.ipynb / …_hyperparameters.ipynb
@@ -153,23 +154,24 @@ pretrained checkpoint with a binary classification head.
 ### Results
 
 Verified metrics for the recurrent baselines on the held-out **test set** (n = 837; 462 `safe` /
-375 `nsfw`), decision threshold **0.50**:
+375 `nsfw`), decision threshold **0.50** (Accuracy and Macro-F1 read directly from notebook output;
+per-class and AUC metrics are saved to each model's `*_test_metrics.csv`):
 
-| Model | Accuracy | Macro-F1 | NSFW-F1 | NSFW recall | ROC-AUC | PR-AUC |
-| --- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **LSTM — baseline** 🏆 | **0.8973** | **0.8955** | **0.8819** | **0.8560** | **0.9403** | **0.9507** |
-| BiLSTM — HPO | 0.8925 | 0.8894 | 0.8711 | 0.8107 | 0.9390 | 0.9495 |
-| LSTM — HPO | 0.8853 | 0.8833 | 0.8681 | 0.8427 | 0.9340 | 0.9470 |
-| BiLSTM — baseline | 0.8805 | 0.8781 | 0.8607 | 0.8240 | 0.9370 | 0.9469 |
+| Model | Accuracy | Macro-F1 |
+| --- | :---: | :---: |
+| **BiLSTM — HPO** 🏆 | **0.9020** | **0.8999** |
+| LSTM — baseline | 0.8984 | 0.8967 |
+| LSTM — HPO | 0.8937 | 0.8918 |
+| BiLSTM — baseline | 0.8853 | 0.8837 |
 
 Among the transformers, the **DOST-RoBERTa** notebooks are the strongest (HPO ≈ **0.91** test
 accuracy). Per-model metrics for every architecture are written to that notebook's own
 `*_test_metrics.csv` / `*_classification_report.csv`.
 
-**Takeaways (recurrent models):** the plain **LSTM baseline wins on every metric** — on this dataset,
-neither bidirectionality nor hyperparameter search beat well-chosen defaults. All models overfit the
-~3,900-sample training set (train accuracy ≈ 0.99 by epoch 3–5); the data size, not the architecture,
-is the binding constraint.
+**Takeaways (recurrent models):** **BiLSTM — HPO leads**, showing that bidirectionality and
+hyperparameter search together can outperform simple defaults. The plain LSTM baseline trails closely
+in second. All models overfit the ~3,900-sample training set (train accuracy ≈ 0.99 by epoch 3–5);
+the data size, not the architecture, remains the binding constraint.
 
 > Re-running notebooks may shift the last digits due to nondeterministic GPU training.
 
@@ -188,6 +190,7 @@ Multiple detector families are benchmarked, most across scale (`n`/`s`) and inpu
 | **YOLOv10** | `yolov10n`, `yolov10n(1)` (tuned) | `ultralytics` (`YOLOv10`) |
 | **YOLOv11** | `yolov11n`, `yolov11s`, `yolov11{n-320,n-768,s-640,s_320}` | `ultralytics` |
 | **YOLOv12** | `yolov12n`, `yolov12n-320`, `yolov12n-640` | `ultralytics` |
+| **YOLOv26** | `yolov26n` | `ultralytics` (latest, YOLO26 support) |
 | **RF-DETR (nano)** | `rf_detr_nano` (+ `_hyperparameters`) | RF-DETR |
 | **EfficientDet** | `efficientdet` (+ `_hyperparameters`) | — |
 | **MobileNet-SSD** | `mobilenetssd_torch` (+ `_hyperparameters`) | PyTorch |
