@@ -1,0 +1,6 @@
+text_snippet,true_label,predicted_label,confidence,inference_time_ms,correct
+kulay rosas ang butas,safe,safe,0.83807015,53.342580795288086,True
+when is it my turn to,safe,safe,0.98567605,36.09418869018555,True
+nigga you weird asf,safe,safe,0.89530516,35.76087951660156,True
+motorboat them and suck,nsfw,nsfw,0.9999969,35.208940505981445,True
+kahit buong araw pa,safe,safe,0.8001038,35.196542739868164,True

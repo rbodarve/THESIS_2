@@ -1,0 +1,7 @@
+{
+  "decision_threshold": 0.5,
+  "max_length": 128,
+  "base_model": "huawei-noah/TinyBERT_General_4L_312D",
+  "num_labels": 2,
+  "language_note": "English-pretrained TinyBERT base; not Tagalog-native"
+}

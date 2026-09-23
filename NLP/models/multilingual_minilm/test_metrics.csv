@@ -1,0 +1,2 @@
+set,accuracy,macro_precision,macro_recall,macro_f1,weighted_f1,nsfw_precision,nsfw_recall,nsfw_f1,threshold,latency_ms_per_sample
+Test,0.914,0.9168,0.9098,0.9124,0.9136,0.9341,0.8693,0.9006,0.5,0.7318

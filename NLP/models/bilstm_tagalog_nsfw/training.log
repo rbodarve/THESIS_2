@@ -1,51 +1,51 @@
-2026-06-11 07:18:16,546 - Logging to file: models/bilstm_tagalog_nsfw/training.log
-2026-06-11 07:18:16,549 - 
+2026-06-30 07:01:56,695 - Logging to file: models/bilstm_tagalog_nsfw/training.log
+2026-06-30 07:01:56,696 - 
 ======================================================================
-2026-06-11 07:18:16,551 - MODEL CONFIGURATION
-2026-06-11 07:18:16,553 - ======================================================================
-2026-06-11 07:18:16,554 - Model Version: 1.0.0
-2026-06-11 07:18:16,556 - Batch Size: 64
-2026-06-11 07:18:16,558 - Embedding Dimension: 64
-2026-06-11 07:18:16,559 - BiLSTM Units: 64
-2026-06-11 07:18:16,562 - Dense Units: 64
-2026-06-11 07:18:16,564 - Max Sequence Length: 64
-2026-06-11 07:18:16,565 - Vocabulary Size: 10000
-2026-06-11 07:18:16,565 - Epochs: 20
-2026-06-11 07:18:16,566 - Dropout Rate: 0.5
-2026-06-11 07:18:16,568 - Learning Rate: 0.001
-2026-06-11 07:18:16,569 - Validation Split: 0.15
-2026-06-11 07:18:16,570 - Test Split: 0.15
-2026-06-11 07:18:16,571 - 
+2026-06-30 07:01:56,697 - MODEL CONFIGURATION
+2026-06-30 07:01:56,698 - ======================================================================
+2026-06-30 07:01:56,700 - Model Version: 1.0.0
+2026-06-30 07:01:56,701 - Batch Size: 64
+2026-06-30 07:01:56,702 - Embedding Dimension: 64
+2026-06-30 07:01:56,703 - BiLSTM Units: 64
+2026-06-30 07:01:56,704 - Dense Units: 64
+2026-06-30 07:01:56,705 - Max Sequence Length: 64
+2026-06-30 07:01:56,706 - Vocabulary Size: 10000
+2026-06-30 07:01:56,707 - Epochs: 20
+2026-06-30 07:01:56,708 - Dropout Rate: 0.5
+2026-06-30 07:01:56,708 - Learning Rate: 0.001
+2026-06-30 07:01:56,709 - Validation Split: 0.15
+2026-06-30 07:01:56,710 - Test Split: 0.15
+2026-06-30 07:01:56,711 - 
 ======================================================================
-2026-06-11 07:18:16,575 - STEP 1: DATA PREPARATION
-2026-06-11 07:18:16,576 - ======================================================================
-2026-06-11 07:18:16,576 - Loading dataset from cleaned_data.csv...
-2026-06-11 07:18:16,592 - Dataset loaded successfully. Shape: (5579, 2)
-2026-06-11 07:18:16,611 - Mapping text labels (safe/nsfw) to binary integers...
-2026-06-11 07:18:16,620 - Dataset validation complete. Clean shape: (5579, 2)
-2026-06-11 07:18:16,630 - Label distribution:
+2026-06-30 07:01:56,712 - STEP 1: DATA PREPARATION
+2026-06-30 07:01:56,713 - ======================================================================
+2026-06-30 07:01:56,714 - Loading dataset from cleaned_data.csv...
+2026-06-30 07:01:56,724 - Dataset loaded successfully. Shape: (5579, 2)
+2026-06-30 07:01:56,739 - Mapping text labels (safe/nsfw) to binary integers...
+2026-06-30 07:01:56,747 - Dataset validation complete. Clean shape: (5579, 2)
+2026-06-30 07:01:56,756 - Label distribution:
 label
 0    3079
 1    2500
 Name: count, dtype: int64
-2026-06-11 07:18:16,650 - Preprocessing data with Augmentation...
-2026-06-11 07:18:16,663 - Training samples: 3905
-2026-06-11 07:18:16,665 - Validation samples: 837
-2026-06-11 07:18:16,667 - Test samples: 837
-2026-06-11 07:18:16,670 - Augmentation disabled (dataset is near-balanced)...
-2026-06-11 07:18:16,687 - Augmented Training samples: 3905
-2026-06-11 07:18:16,690 - Normalizing text...
-2026-06-11 07:18:17,029 - Vocabulary size: 5443
-2026-06-11 07:18:17,031 - Sequence shape: (3905, 64)
-2026-06-11 07:18:17,036 - Data preparation complete.
-2026-06-11 07:18:17,039 - 
+2026-06-30 07:01:56,774 - Preprocessing data with Augmentation...
+2026-06-30 07:01:56,781 - Training samples: 3905
+2026-06-30 07:01:56,782 - Validation samples: 837
+2026-06-30 07:01:56,782 - Test samples: 837
+2026-06-30 07:01:56,783 - Augmentation disabled (dataset is near-balanced)...
+2026-06-30 07:01:56,795 - Augmented Training samples: 3905
+2026-06-30 07:01:56,797 - Normalizing text...
+2026-06-30 07:01:57,144 - Vocabulary size: 5443
+2026-06-30 07:01:57,145 - Sequence shape: (3905, 64)
+2026-06-30 07:01:57,148 - Data preparation complete.
+2026-06-30 07:01:57,149 - 
 ======================================================================
-2026-06-11 07:18:17,043 - STEP 2: MODEL BUILDING
-2026-06-11 07:18:17,046 - ======================================================================
-2026-06-11 07:18:17,048 - Building BiLSTM model with Focal Loss...
-2026-06-11 07:18:18,760 - 
+2026-06-30 07:01:57,149 - STEP 2: MODEL BUILDING
+2026-06-30 07:01:57,150 - ======================================================================
+2026-06-30 07:01:57,151 - Building BiLSTM model with Focal Loss...
+2026-06-30 07:01:58,524 - 
 Model Summary:
-2026-06-11 07:18:18,775 - Model: "sequential"
+2026-06-30 07:01:58,531 - Model: "sequential"
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
 ┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
@@ -66,213 +66,213 @@ Model Summary:
  Trainable params: 0 (0.00 B)
  Non-trainable params: 0 (0.00 B)
 
-2026-06-11 07:18:18,777 - 
+2026-06-30 07:01:58,533 - 
 ======================================================================
-2026-06-11 07:18:18,779 - STEP 3: TRAINING
-2026-06-11 07:18:18,780 - ======================================================================
-2026-06-11 07:18:18,782 - 
+2026-06-30 07:01:58,534 - STEP 3: TRAINING
+2026-06-30 07:01:58,535 - ======================================================================
+2026-06-30 07:01:58,536 - 
 Starting model training...
-2026-06-11 07:18:58,837 - 
+2026-06-30 07:02:16,285 - 
 Model saved to models/bilstm_tagalog_nsfw
-2026-06-11 07:18:58,845 - Training history saved to models/bilstm_tagalog_nsfw/training_history.csv
-2026-06-11 07:18:58,847 - 
+2026-06-30 07:02:16,292 - Training history saved to models/bilstm_tagalog_nsfw/training_history.csv
+2026-06-30 07:02:16,293 - 
 ======================================================================
-2026-06-11 07:18:58,848 - STEP 4: EVALUATION (VALIDATION SET)
-2026-06-11 07:18:58,849 - ======================================================================
-2026-06-11 07:18:58,850 - 
+2026-06-30 07:02:16,294 - STEP 4: EVALUATION (VALIDATION SET)
+2026-06-30 07:02:16,296 - ======================================================================
+2026-06-30 07:02:16,296 - 
 Evaluating model...
-2026-06-11 07:18:58,851 - Tuning decision threshold on Validation Set...
-2026-06-11 07:18:59,569 - Optimal Threshold: 0.5000 (tuned 0.65->F1 0.8835 vs 0.50->F1 0.8778)
-2026-06-11 07:18:59,570 - Validation NSFW F1: 0.8778
-2026-06-11 07:18:59,574 - Calculating final metrics on Validation Set...
-2026-06-11 07:18:59,770 - Validation metrics saved to models/bilstm_tagalog_nsfw/validation_metrics.csv
-2026-06-11 07:18:59,783 - Validation classification report saved to models/bilstm_tagalog_nsfw/validation_classification_report.csv
-2026-06-11 07:18:59,789 - Validation predictions saved to models/bilstm_tagalog_nsfw/validation_predictions.csv
-2026-06-11 07:18:59,790 - Validation Accuracy: 0.8949
-2026-06-11 07:18:59,794 - Validation Macro F1-Score: 0.8928
-2026-06-11 07:18:59,796 - Metrics saved to models/bilstm_tagalog_nsfw/validation_evaluation_metrics.txt
-2026-06-11 07:19:00,019 - Confusion matrix saved to models/bilstm_tagalog_nsfw/validation_confusion_matrix.png
-2026-06-11 07:19:00,021 - Final validation accuracy: 0.8949
-2026-06-11 07:19:00,022 - 
+2026-06-30 07:02:16,297 - Tuning decision threshold on Validation Set...
+2026-06-30 07:02:17,040 - Optimal Threshold: 0.5000 (tuned 0.54->F1 0.8799 vs 0.50->F1 0.8747)
+2026-06-30 07:02:17,041 - Validation NSFW F1: 0.8747
+2026-06-30 07:02:17,042 - Calculating final metrics on Validation Set...
+2026-06-30 07:02:17,227 - Validation metrics saved to models/bilstm_tagalog_nsfw/validation_metrics.csv
+2026-06-30 07:02:17,237 - Validation classification report saved to models/bilstm_tagalog_nsfw/validation_classification_report.csv
+2026-06-30 07:02:17,240 - Validation predictions saved to models/bilstm_tagalog_nsfw/validation_predictions.csv
+2026-06-30 07:02:17,241 - Validation Accuracy: 0.8877
+2026-06-30 07:02:17,242 - Validation Macro F1-Score: 0.8865
+2026-06-30 07:02:17,243 - Metrics saved to models/bilstm_tagalog_nsfw/validation_evaluation_metrics.txt
+2026-06-30 07:02:17,465 - Confusion matrix saved to models/bilstm_tagalog_nsfw/validation_confusion_matrix.png
+2026-06-30 07:02:17,466 - Final validation accuracy: 0.8877
+2026-06-30 07:02:17,467 - 
 ======================================================================
-2026-06-11 07:19:00,025 - STEP 5: TEST SET EVALUATION
-2026-06-11 07:19:00,027 - ======================================================================
-2026-06-11 07:19:00,031 - 
+2026-06-30 07:02:17,469 - STEP 5: TEST SET EVALUATION
+2026-06-30 07:02:17,471 - ======================================================================
+2026-06-30 07:02:17,472 - 
 Evaluating model...
-2026-06-11 07:19:00,032 - Tuning decision threshold on Validation Set...
-2026-06-11 07:19:00,285 - Optimal Threshold: 0.5000 (tuned 0.65->F1 0.8835 vs 0.50->F1 0.8778)
-2026-06-11 07:19:00,287 - Validation NSFW F1: 0.8778
-2026-06-11 07:19:00,289 - Calculating final metrics on Test Set using optimal threshold...
-2026-06-11 07:19:00,504 - Test metrics saved to models/bilstm_tagalog_nsfw/test_metrics.csv
-2026-06-11 07:19:00,515 - Test classification report saved to models/bilstm_tagalog_nsfw/test_classification_report.csv
-2026-06-11 07:19:00,520 - Test predictions saved to models/bilstm_tagalog_nsfw/test_predictions.csv
-2026-06-11 07:19:00,521 - Test Accuracy: 0.8805
-2026-06-11 07:19:00,523 - Test Macro F1-Score: 0.8781
-2026-06-11 07:19:00,524 - Metrics saved to models/bilstm_tagalog_nsfw/test_evaluation_metrics.txt
-2026-06-11 07:19:00,685 - Confusion matrix saved to models/bilstm_tagalog_nsfw/test_confusion_matrix.png
-2026-06-11 07:19:00,687 - Final Test Set Accuracy: 0.8805
-2026-06-11 07:19:00,689 - 
+2026-06-30 07:02:17,474 - Tuning decision threshold on Validation Set...
+2026-06-30 07:02:17,707 - Optimal Threshold: 0.5000 (tuned 0.54->F1 0.8799 vs 0.50->F1 0.8747)
+2026-06-30 07:02:17,708 - Validation NSFW F1: 0.8747
+2026-06-30 07:02:17,709 - Calculating final metrics on Test Set using optimal threshold...
+2026-06-30 07:02:17,889 - Test metrics saved to models/bilstm_tagalog_nsfw/test_metrics.csv
+2026-06-30 07:02:17,899 - Test classification report saved to models/bilstm_tagalog_nsfw/test_classification_report.csv
+2026-06-30 07:02:17,903 - Test predictions saved to models/bilstm_tagalog_nsfw/test_predictions.csv
+2026-06-30 07:02:17,904 - Test Accuracy: 0.8853
+2026-06-30 07:02:17,905 - Test Macro F1-Score: 0.8837
+2026-06-30 07:02:17,906 - Metrics saved to models/bilstm_tagalog_nsfw/test_evaluation_metrics.txt
+2026-06-30 07:02:18,071 - Confusion matrix saved to models/bilstm_tagalog_nsfw/test_confusion_matrix.png
+2026-06-30 07:02:18,073 - Final Test Set Accuracy: 0.8853
+2026-06-30 07:02:18,074 - 
 ======================================================================
-2026-06-11 07:19:00,690 - STEP 6: EXPORT
-2026-06-11 07:19:00,691 - ======================================================================
-2026-06-11 07:19:01,014 - Training history saved to models/bilstm_tagalog_nsfw/training_history.png
-2026-06-11 07:19:01,017 - 
+2026-06-30 07:02:18,075 - STEP 6: EXPORT
+2026-06-30 07:02:18,076 - ======================================================================
+2026-06-30 07:02:18,395 - Training history saved to models/bilstm_tagalog_nsfw/training_history.png
+2026-06-30 07:02:18,397 - 
 Saving model artifacts...
-2026-06-11 07:19:01,027 - Tokenizer saved to models/bilstm_tagalog_nsfw/tokenizer.pickle
-2026-06-11 07:19:01,029 - Configuration saved to models/bilstm_tagalog_nsfw/config.json
-2026-06-11 07:19:01,031 - 
+2026-06-30 07:02:18,401 - Tokenizer saved to models/bilstm_tagalog_nsfw/tokenizer.pickle
+2026-06-30 07:02:18,402 - Configuration saved to models/bilstm_tagalog_nsfw/config.json
+2026-06-30 07:02:18,403 - 
 Exporting to TensorFlow Lite...
-2026-06-11 07:19:02,704 - TFLite model saved to models/bilstm_tagalog_nsfw/model.tflite
-2026-06-11 07:19:02,706 - TFLite model size: 0.84 MB
-2026-06-11 07:19:02,712 - Pipeline complete. Artifacts in models/bilstm_tagalog_nsfw
-2026-06-11 07:19:02,715 - 
+2026-06-30 07:02:20,108 - TFLite model saved to models/bilstm_tagalog_nsfw/model.tflite
+2026-06-30 07:02:20,109 - TFLite model size: 0.84 MB
+2026-06-30 07:02:20,111 - Pipeline complete. Artifacts in models/bilstm_tagalog_nsfw
+2026-06-30 07:02:20,112 - 
 Testing model inference...
-2026-06-11 07:19:02,831 - Inference Configuration:
-2026-06-11 07:19:02,832 -   Calibrated Threshold: 0.5000
-2026-06-11 07:19:02,834 -   Lenient Threshold: 0.2000
-2026-06-11 07:19:02,836 -   Standard Threshold: 0.5000
-2026-06-11 07:19:02,837 -   Strict Threshold: 0.8000
-2026-06-11 07:19:03,132 - ----------------------------------------
-2026-06-11 07:19:03,134 - Text: 'hanapin ang langgam excuse my hairy pit'
-2026-06-11 07:19:03,137 - Confidence Score: 0.0167
-2026-06-11 07:19:03,138 -   [Calibrated @ 0.50] -> Safe
-2026-06-11 07:19:03,139 -   [Lenient @ 0.20] -> Safe
-2026-06-11 07:19:03,141 -   [Standard @ 0.50] -> Safe
-2026-06-11 07:19:03,142 -   [Strict @ 0.80] -> Safe
-2026-06-11 07:19:03,219 - ----------------------------------------
-2026-06-11 07:19:03,221 - Text: 'she got fire ass'
-2026-06-11 07:19:03,223 - Confidence Score: 0.9316
-2026-06-11 07:19:03,227 -   [Calibrated @ 0.50] -> NSFW
-2026-06-11 07:19:03,230 -   [Lenient @ 0.20] -> NSFW
-2026-06-11 07:19:03,233 -   [Standard @ 0.50] -> NSFW
-2026-06-11 07:19:03,236 -   [Strict @ 0.80] -> NSFW
-2026-06-11 07:19:03,319 - ----------------------------------------
-2026-06-11 07:19:03,321 - Text: 'stress posting ulit kasi wym di pa rin ma balance na adjust ko naman na lahat'
-2026-06-11 07:19:03,322 - Confidence Score: 0.0670
-2026-06-11 07:19:03,324 -   [Calibrated @ 0.50] -> Safe
-2026-06-11 07:19:03,325 -   [Lenient @ 0.20] -> Safe
-2026-06-11 07:19:03,328 -   [Standard @ 0.50] -> Safe
-2026-06-11 07:19:03,329 -   [Strict @ 0.80] -> Safe
-2026-06-11 07:19:03,412 - ----------------------------------------
-2026-06-11 07:19:03,414 - Text: 'that bikini looks like its been painted on'
-2026-06-11 07:19:03,417 - Confidence Score: 0.0357
-2026-06-11 07:19:03,420 -   [Calibrated @ 0.50] -> Safe
-2026-06-11 07:19:03,421 -   [Lenient @ 0.20] -> Safe
-2026-06-11 07:19:03,422 -   [Standard @ 0.50] -> Safe
-2026-06-11 07:19:03,424 -   [Strict @ 0.80] -> Safe
-2026-06-11 07:19:03,509 - ----------------------------------------
-2026-06-11 07:19:03,510 - Text: 'heres sneak peek of bodyshots nsfw using the top posts np com bodyshots top sort top amp year of the year amazing he didnt hit me in the face this time im assuming people are happy about it imgur com ckurg jpg comments np com bodyshots comments kro hp amazing he didnt hit me in the face this timeim proud of this one he covered me good oc imgur com izhbc png comments np com bodyshots comments iq ddm proud of this one he covered me good oc pulling out to cum all over me redgifs com watch whichlikelyreynard comments np com bodyshots comments mhtjzd pulling out to cum all over me im bot beep boop downvote to remove contact me com message compose to sneakpeekbot info np com sneakpeekbot opt out np com sneakpeekbot comments wk blacklist ix'
-2026-06-11 07:19:03,513 - Confidence Score: 0.9305
-2026-06-11 07:19:03,516 -   [Calibrated @ 0.50] -> NSFW
-2026-06-11 07:19:03,519 -   [Lenient @ 0.20] -> NSFW
-2026-06-11 07:19:03,521 -   [Standard @ 0.50] -> NSFW
-2026-06-11 07:19:03,524 -   [Strict @ 0.80] -> NSFW
-2026-06-11 07:19:03,599 - ----------------------------------------
-2026-06-11 07:19:03,602 - Text: 'can taste please just drop have so much to spare'
-2026-06-11 07:19:03,604 - Confidence Score: 0.0761
-2026-06-11 07:19:03,606 -   [Calibrated @ 0.50] -> Safe
-2026-06-11 07:19:03,607 -   [Lenient @ 0.20] -> Safe
-2026-06-11 07:19:03,610 -   [Standard @ 0.50] -> Safe
-2026-06-11 07:19:03,612 -   [Strict @ 0.80] -> Safe
-2026-06-11 07:19:03,692 - ----------------------------------------
-2026-06-11 07:19:03,694 - Text: 'yesssssss tongue kiss deeply'
-2026-06-11 07:19:03,697 - Norm: 'yess tongue kiss deeply'
-2026-06-11 07:19:03,698 - Confidence Score: 0.8616
-2026-06-11 07:19:03,699 -   [Calibrated @ 0.50] -> NSFW
-2026-06-11 07:19:03,700 -   [Lenient @ 0.20] -> NSFW
-2026-06-11 07:19:03,701 -   [Standard @ 0.50] -> NSFW
-2026-06-11 07:19:03,703 -   [Strict @ 0.80] -> NSFW
-2026-06-11 07:19:03,782 - ----------------------------------------
-2026-06-11 07:19:03,784 - Text: 'perfect combination hot and slimy'
-2026-06-11 07:19:03,786 - Confidence Score: 0.9613
-2026-06-11 07:19:03,788 -   [Calibrated @ 0.50] -> NSFW
-2026-06-11 07:19:03,791 -   [Lenient @ 0.20] -> NSFW
-2026-06-11 07:19:03,793 -   [Standard @ 0.50] -> NSFW
-2026-06-11 07:19:03,795 -   [Strict @ 0.80] -> NSFW
-2026-06-11 07:19:03,878 - ----------------------------------------
-2026-06-11 07:19:03,881 - Text: 'if we reverse your statement we see why its not one we use for reasons of evidence for claim gt im one of the rare ones that got the procedure as an adult gt the prevalence of circumcision in na is partly to blame for this imo your circumstance is not generalizable it is as you said rare'
-2026-06-11 07:19:03,882 - Confidence Score: 0.0914
-2026-06-11 07:19:03,885 -   [Calibrated @ 0.50] -> Safe
-2026-06-11 07:19:03,886 -   [Lenient @ 0.20] -> Safe
-2026-06-11 07:19:03,888 -   [Standard @ 0.50] -> Safe
-2026-06-11 07:19:03,890 -   [Strict @ 0.80] -> Safe
-2026-06-11 07:19:03,973 - ----------------------------------------
-2026-06-11 07:19:03,976 - Text: 'wow amazing im down for that anyday hahaha'
-2026-06-11 07:19:03,978 - Confidence Score: 0.0398
-2026-06-11 07:19:03,981 -   [Calibrated @ 0.50] -> Safe
-2026-06-11 07:19:03,984 -   [Lenient @ 0.20] -> Safe
-2026-06-11 07:19:03,987 -   [Standard @ 0.50] -> Safe
-2026-06-11 07:19:03,989 -   [Strict @ 0.80] -> Safe
-2026-06-11 07:19:04,072 - ----------------------------------------
-2026-06-11 07:19:04,074 - Text: 'want to breed that bitch'
-2026-06-11 07:19:04,076 - Confidence Score: 0.9753
-2026-06-11 07:19:04,078 -   [Calibrated @ 0.50] -> NSFW
-2026-06-11 07:19:04,080 -   [Lenient @ 0.20] -> NSFW
-2026-06-11 07:19:04,082 -   [Standard @ 0.50] -> NSFW
-2026-06-11 07:19:04,083 -   [Strict @ 0.80] -> NSFW
-2026-06-11 07:19:04,165 - ----------------------------------------
-2026-06-11 07:19:04,167 - Text: 'looks into the camera for what concentrate on swallowing his cum gezzz'
-2026-06-11 07:19:04,170 - Norm: 'looks into the camera for what concentrate on swallowing his cum gezz'
-2026-06-11 07:19:04,172 - Confidence Score: 0.9641
-2026-06-11 07:19:04,175 -   [Calibrated @ 0.50] -> NSFW
-2026-06-11 07:19:04,175 -   [Lenient @ 0.20] -> NSFW
-2026-06-11 07:19:04,178 -   [Standard @ 0.50] -> NSFW
-2026-06-11 07:19:04,180 -   [Strict @ 0.80] -> NSFW
-2026-06-11 07:19:04,263 - ----------------------------------------
-2026-06-11 07:19:04,264 - Text: 'sarap mong maging puta'
-2026-06-11 07:19:04,265 - Confidence Score: 0.3114
-2026-06-11 07:19:04,266 -   [Calibrated @ 0.50] -> Safe
-2026-06-11 07:19:04,267 -   [Lenient @ 0.20] -> NSFW
-2026-06-11 07:19:04,269 -   [Standard @ 0.50] -> Safe
-2026-06-11 07:19:04,270 -   [Strict @ 0.80] -> Safe
-2026-06-11 07:19:04,398 - ----------------------------------------
-2026-06-11 07:19:04,399 - Text: 'grabeng puke yan sarap kainin'
-2026-06-11 07:19:04,401 - Confidence Score: 0.9470
-2026-06-11 07:19:04,402 -   [Calibrated @ 0.50] -> NSFW
-2026-06-11 07:19:04,403 -   [Lenient @ 0.20] -> NSFW
-2026-06-11 07:19:04,405 -   [Standard @ 0.50] -> NSFW
-2026-06-11 07:19:04,406 -   [Strict @ 0.80] -> NSFW
-2026-06-11 07:19:04,493 - ----------------------------------------
-2026-06-11 07:19:04,498 - Text: 'daming mag ddm sayo hahaha'
-2026-06-11 07:19:04,500 - Confidence Score: 0.2182
-2026-06-11 07:19:04,501 -   [Calibrated @ 0.50] -> Safe
-2026-06-11 07:19:04,502 -   [Lenient @ 0.20] -> NSFW
-2026-06-11 07:19:04,503 -   [Standard @ 0.50] -> Safe
-2026-06-11 07:19:04,504 -   [Strict @ 0.80] -> Safe
-2026-06-11 07:19:04,592 - ----------------------------------------
-2026-06-11 07:19:04,594 - Text: 'if youre into older guys ill pound your pussy'
-2026-06-11 07:19:04,597 - Confidence Score: 0.9212
-2026-06-11 07:19:04,600 -   [Calibrated @ 0.50] -> NSFW
-2026-06-11 07:19:04,602 -   [Lenient @ 0.20] -> NSFW
-2026-06-11 07:19:04,604 -   [Standard @ 0.50] -> NSFW
-2026-06-11 07:19:04,606 -   [Strict @ 0.80] -> NSFW
-2026-06-11 07:19:04,691 - ----------------------------------------
-2026-06-11 07:19:04,693 - Text: 'give you it everyday'
-2026-06-11 07:19:04,696 - Confidence Score: 0.2271
-2026-06-11 07:19:04,697 -   [Calibrated @ 0.50] -> Safe
-2026-06-11 07:19:04,700 -   [Lenient @ 0.20] -> NSFW
-2026-06-11 07:19:04,701 -   [Standard @ 0.50] -> Safe
-2026-06-11 07:19:04,703 -   [Strict @ 0.80] -> Safe
-2026-06-11 07:19:04,795 - ----------------------------------------
-2026-06-11 07:19:04,797 - Text: 'that lot of cum only used to one load'
-2026-06-11 07:19:04,798 - Confidence Score: 0.9111
-2026-06-11 07:19:04,800 -   [Calibrated @ 0.50] -> NSFW
-2026-06-11 07:19:04,802 -   [Lenient @ 0.20] -> NSFW
-2026-06-11 07:19:04,803 -   [Standard @ 0.50] -> NSFW
-2026-06-11 07:19:04,804 -   [Strict @ 0.80] -> NSFW
-2026-06-11 07:19:04,900 - ----------------------------------------
-2026-06-11 07:19:04,902 - Text: 'can help you with that'
-2026-06-11 07:19:04,903 - Confidence Score: 0.0314
-2026-06-11 07:19:04,904 -   [Calibrated @ 0.50] -> Safe
-2026-06-11 07:19:04,906 -   [Lenient @ 0.20] -> Safe
-2026-06-11 07:19:04,907 -   [Standard @ 0.50] -> Safe
-2026-06-11 07:19:04,908 -   [Strict @ 0.80] -> Safe
-2026-06-11 07:19:04,999 - ----------------------------------------
-2026-06-11 07:19:05,001 - Text: 'your eyes are absolutely stunning'
-2026-06-11 07:19:05,003 - Confidence Score: 0.0347
-2026-06-11 07:19:05,005 -   [Calibrated @ 0.50] -> Safe
-2026-06-11 07:19:05,009 -   [Lenient @ 0.20] -> Safe
-2026-06-11 07:19:05,012 -   [Standard @ 0.50] -> Safe
-2026-06-11 07:19:05,015 -   [Strict @ 0.80] -> Safe
-2026-06-11 07:19:05,022 - 
+2026-06-30 07:02:20,228 - Inference Configuration:
+2026-06-30 07:02:20,229 -   Calibrated Threshold: 0.5000
+2026-06-30 07:02:20,230 -   Lenient Threshold: 0.2000
+2026-06-30 07:02:20,231 -   Standard Threshold: 0.5000
+2026-06-30 07:02:20,232 -   Strict Threshold: 0.8000
+2026-06-30 07:02:20,545 - ----------------------------------------
+2026-06-30 07:02:20,547 - Text: 'hanapin ang langgam excuse my hairy pit'
+2026-06-30 07:02:20,548 - Confidence Score: 0.0359
+2026-06-30 07:02:20,549 -   [Calibrated @ 0.50] -> Safe
+2026-06-30 07:02:20,550 -   [Lenient @ 0.20] -> Safe
+2026-06-30 07:02:20,551 -   [Standard @ 0.50] -> Safe
+2026-06-30 07:02:20,552 -   [Strict @ 0.80] -> Safe
+2026-06-30 07:02:20,627 - ----------------------------------------
+2026-06-30 07:02:20,628 - Text: 'she got fire ass'
+2026-06-30 07:02:20,630 - Confidence Score: 0.9253
+2026-06-30 07:02:20,631 -   [Calibrated @ 0.50] -> NSFW
+2026-06-30 07:02:20,632 -   [Lenient @ 0.20] -> NSFW
+2026-06-30 07:02:20,633 -   [Standard @ 0.50] -> NSFW
+2026-06-30 07:02:20,634 -   [Strict @ 0.80] -> NSFW
+2026-06-30 07:02:20,708 - ----------------------------------------
+2026-06-30 07:02:20,709 - Text: 'stress posting ulit kasi wym di pa rin ma balance na adjust ko naman na lahat'
+2026-06-30 07:02:20,710 - Confidence Score: 0.0844
+2026-06-30 07:02:20,711 -   [Calibrated @ 0.50] -> Safe
+2026-06-30 07:02:20,712 -   [Lenient @ 0.20] -> Safe
+2026-06-30 07:02:20,713 -   [Standard @ 0.50] -> Safe
+2026-06-30 07:02:20,715 -   [Strict @ 0.80] -> Safe
+2026-06-30 07:02:20,789 - ----------------------------------------
+2026-06-30 07:02:20,790 - Text: 'that bikini looks like its been painted on'
+2026-06-30 07:02:20,791 - Confidence Score: 0.0390
+2026-06-30 07:02:20,791 -   [Calibrated @ 0.50] -> Safe
+2026-06-30 07:02:20,793 -   [Lenient @ 0.20] -> Safe
+2026-06-30 07:02:20,794 -   [Standard @ 0.50] -> Safe
+2026-06-30 07:02:20,794 -   [Strict @ 0.80] -> Safe
+2026-06-30 07:02:20,869 - ----------------------------------------
+2026-06-30 07:02:20,870 - Text: 'heres sneak peek of bodyshots nsfw using the top posts np com bodyshots top sort top amp year of the year amazing he didnt hit me in the face this time im assuming people are happy about it imgur com ckurg jpg comments np com bodyshots comments kro hp amazing he didnt hit me in the face this timeim proud of this one he covered me good oc imgur com izhbc png comments np com bodyshots comments iq ddm proud of this one he covered me good oc pulling out to cum all over me redgifs com watch whichlikelyreynard comments np com bodyshots comments mhtjzd pulling out to cum all over me im bot beep boop downvote to remove contact me com message compose to sneakpeekbot info np com sneakpeekbot opt out np com sneakpeekbot comments wk blacklist ix'
+2026-06-30 07:02:20,871 - Confidence Score: 0.9458
+2026-06-30 07:02:20,872 -   [Calibrated @ 0.50] -> NSFW
+2026-06-30 07:02:20,873 -   [Lenient @ 0.20] -> NSFW
+2026-06-30 07:02:20,874 -   [Standard @ 0.50] -> NSFW
+2026-06-30 07:02:20,875 -   [Strict @ 0.80] -> NSFW
+2026-06-30 07:02:20,950 - ----------------------------------------
+2026-06-30 07:02:20,952 - Text: 'can taste please just drop have so much to spare'
+2026-06-30 07:02:20,953 - Confidence Score: 0.0590
+2026-06-30 07:02:20,953 -   [Calibrated @ 0.50] -> Safe
+2026-06-30 07:02:20,954 -   [Lenient @ 0.20] -> Safe
+2026-06-30 07:02:20,956 -   [Standard @ 0.50] -> Safe
+2026-06-30 07:02:20,957 -   [Strict @ 0.80] -> Safe
+2026-06-30 07:02:21,032 - ----------------------------------------
+2026-06-30 07:02:21,033 - Text: 'yesssssss tongue kiss deeply'
+2026-06-30 07:02:21,034 - Norm: 'yess tongue kiss deeply'
+2026-06-30 07:02:21,035 - Confidence Score: 0.9104
+2026-06-30 07:02:21,036 -   [Calibrated @ 0.50] -> NSFW
+2026-06-30 07:02:21,037 -   [Lenient @ 0.20] -> NSFW
+2026-06-30 07:02:21,038 -   [Standard @ 0.50] -> NSFW
+2026-06-30 07:02:21,039 -   [Strict @ 0.80] -> NSFW
+2026-06-30 07:02:21,116 - ----------------------------------------
+2026-06-30 07:02:21,117 - Text: 'perfect combination hot and slimy'
+2026-06-30 07:02:21,118 - Confidence Score: 0.9696
+2026-06-30 07:02:21,119 -   [Calibrated @ 0.50] -> NSFW
+2026-06-30 07:02:21,120 -   [Lenient @ 0.20] -> NSFW
+2026-06-30 07:02:21,121 -   [Standard @ 0.50] -> NSFW
+2026-06-30 07:02:21,121 -   [Strict @ 0.80] -> NSFW
+2026-06-30 07:02:21,196 - ----------------------------------------
+2026-06-30 07:02:21,198 - Text: 'if we reverse your statement we see why its not one we use for reasons of evidence for claim gt im one of the rare ones that got the procedure as an adult gt the prevalence of circumcision in na is partly to blame for this imo your circumstance is not generalizable it is as you said rare'
+2026-06-30 07:02:21,199 - Confidence Score: 0.3321
+2026-06-30 07:02:21,200 -   [Calibrated @ 0.50] -> Safe
+2026-06-30 07:02:21,200 -   [Lenient @ 0.20] -> NSFW
+2026-06-30 07:02:21,202 -   [Standard @ 0.50] -> Safe
+2026-06-30 07:02:21,203 -   [Strict @ 0.80] -> Safe
+2026-06-30 07:02:21,279 - ----------------------------------------
+2026-06-30 07:02:21,280 - Text: 'wow amazing im down for that anyday hahaha'
+2026-06-30 07:02:21,281 - Confidence Score: 0.0477
+2026-06-30 07:02:21,282 -   [Calibrated @ 0.50] -> Safe
+2026-06-30 07:02:21,283 -   [Lenient @ 0.20] -> Safe
+2026-06-30 07:02:21,284 -   [Standard @ 0.50] -> Safe
+2026-06-30 07:02:21,285 -   [Strict @ 0.80] -> Safe
+2026-06-30 07:02:21,361 - ----------------------------------------
+2026-06-30 07:02:21,363 - Text: 'want to breed that bitch'
+2026-06-30 07:02:21,364 - Confidence Score: 0.9812
+2026-06-30 07:02:21,365 -   [Calibrated @ 0.50] -> NSFW
+2026-06-30 07:02:21,366 -   [Lenient @ 0.20] -> NSFW
+2026-06-30 07:02:21,367 -   [Standard @ 0.50] -> NSFW
+2026-06-30 07:02:21,369 -   [Strict @ 0.80] -> NSFW
+2026-06-30 07:02:21,450 - ----------------------------------------
+2026-06-30 07:02:21,451 - Text: 'looks into the camera for what concentrate on swallowing his cum gezzz'
+2026-06-30 07:02:21,452 - Norm: 'looks into the camera for what concentrate on swallowing his cum gezz'
+2026-06-30 07:02:21,453 - Confidence Score: 0.9493
+2026-06-30 07:02:21,454 -   [Calibrated @ 0.50] -> NSFW
+2026-06-30 07:02:21,455 -   [Lenient @ 0.20] -> NSFW
+2026-06-30 07:02:21,456 -   [Standard @ 0.50] -> NSFW
+2026-06-30 07:02:21,457 -   [Strict @ 0.80] -> NSFW
+2026-06-30 07:02:21,533 - ----------------------------------------
+2026-06-30 07:02:21,534 - Text: 'sarap mong maging puta'
+2026-06-30 07:02:21,535 - Confidence Score: 0.4641
+2026-06-30 07:02:21,535 -   [Calibrated @ 0.50] -> Safe
+2026-06-30 07:02:21,537 -   [Lenient @ 0.20] -> NSFW
+2026-06-30 07:02:21,539 -   [Standard @ 0.50] -> Safe
+2026-06-30 07:02:21,539 -   [Strict @ 0.80] -> Safe
+2026-06-30 07:02:21,616 - ----------------------------------------
+2026-06-30 07:02:21,617 - Text: 'grabeng puke yan sarap kainin'
+2026-06-30 07:02:21,618 - Confidence Score: 0.9653
+2026-06-30 07:02:21,619 -   [Calibrated @ 0.50] -> NSFW
+2026-06-30 07:02:21,620 -   [Lenient @ 0.20] -> NSFW
+2026-06-30 07:02:21,622 -   [Standard @ 0.50] -> NSFW
+2026-06-30 07:02:21,623 -   [Strict @ 0.80] -> NSFW
+2026-06-30 07:02:21,699 - ----------------------------------------
+2026-06-30 07:02:21,700 - Text: 'daming mag ddm sayo hahaha'
+2026-06-30 07:02:21,700 - Confidence Score: 0.3182
+2026-06-30 07:02:21,702 -   [Calibrated @ 0.50] -> Safe
+2026-06-30 07:02:21,704 -   [Lenient @ 0.20] -> NSFW
+2026-06-30 07:02:21,705 -   [Standard @ 0.50] -> Safe
+2026-06-30 07:02:21,706 -   [Strict @ 0.80] -> Safe
+2026-06-30 07:02:21,785 - ----------------------------------------
+2026-06-30 07:02:21,786 - Text: 'if youre into older guys ill pound your pussy'
+2026-06-30 07:02:21,787 - Confidence Score: 0.8970
+2026-06-30 07:02:21,788 -   [Calibrated @ 0.50] -> NSFW
+2026-06-30 07:02:21,789 -   [Lenient @ 0.20] -> NSFW
+2026-06-30 07:02:21,790 -   [Standard @ 0.50] -> NSFW
+2026-06-30 07:02:21,791 -   [Strict @ 0.80] -> NSFW
+2026-06-30 07:02:21,865 - ----------------------------------------
+2026-06-30 07:02:21,867 - Text: 'give you it everyday'
+2026-06-30 07:02:21,867 - Confidence Score: 0.1310
+2026-06-30 07:02:21,868 -   [Calibrated @ 0.50] -> Safe
+2026-06-30 07:02:21,869 -   [Lenient @ 0.20] -> Safe
+2026-06-30 07:02:21,870 -   [Standard @ 0.50] -> Safe
+2026-06-30 07:02:21,871 -   [Strict @ 0.80] -> Safe
+2026-06-30 07:02:21,951 - ----------------------------------------
+2026-06-30 07:02:21,953 - Text: 'that lot of cum only used to one load'
+2026-06-30 07:02:21,954 - Confidence Score: 0.9281
+2026-06-30 07:02:21,955 -   [Calibrated @ 0.50] -> NSFW
+2026-06-30 07:02:21,956 -   [Lenient @ 0.20] -> NSFW
+2026-06-30 07:02:21,958 -   [Standard @ 0.50] -> NSFW
+2026-06-30 07:02:21,959 -   [Strict @ 0.80] -> NSFW
+2026-06-30 07:02:22,036 - ----------------------------------------
+2026-06-30 07:02:22,037 - Text: 'can help you with that'
+2026-06-30 07:02:22,038 - Confidence Score: 0.0263
+2026-06-30 07:02:22,039 -   [Calibrated @ 0.50] -> Safe
+2026-06-30 07:02:22,040 -   [Lenient @ 0.20] -> Safe
+2026-06-30 07:02:22,041 -   [Standard @ 0.50] -> Safe
+2026-06-30 07:02:22,043 -   [Strict @ 0.80] -> Safe
+2026-06-30 07:02:22,122 - ----------------------------------------
+2026-06-30 07:02:22,123 - Text: 'your eyes are absolutely stunning'
+2026-06-30 07:02:22,124 - Confidence Score: 0.0456
+2026-06-30 07:02:22,125 -   [Calibrated @ 0.50] -> Safe
+2026-06-30 07:02:22,125 -   [Lenient @ 0.20] -> Safe
+2026-06-30 07:02:22,126 -   [Standard @ 0.50] -> Safe
+2026-06-30 07:02:22,127 -   [Strict @ 0.80] -> Safe
+2026-06-30 07:02:22,131 - 
 Inference results saved to models/bilstm_tagalog_nsfw/inference_results.csv

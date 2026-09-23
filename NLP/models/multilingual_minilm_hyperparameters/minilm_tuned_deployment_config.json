@@ -1,0 +1,14 @@
+{
+  "decision_threshold": 0.5,
+  "max_length": 128,
+  "base_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "num_labels": 2,
+  "best_params": {
+    "learning_rate": 4.9886222801863184e-05,
+    "batch_size": 32,
+    "dropout": 0.49176131691640823,
+    "warmup_ratio": 0.006169636512825767,
+    "weight_decay": 0.12102185633113086
+  },
+  "language_note": "Multilingual MiniLM base (50+ langs incl. Filipino/Tagalog); largest base in study"
+}

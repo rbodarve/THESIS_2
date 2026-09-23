@@ -1,0 +1,2 @@
+model,tflite_accuracy,pytorch_accuracy,accuracy_delta,agreement,label_flips,n_samples,mean_abs_prob_diff,max_abs_prob_diff,threshold
+float32,0.8960573476702509,0.8960573476702509,0.0,1.0,0,837,3.843600445998527e-05,0.0014132228174590922,0.5

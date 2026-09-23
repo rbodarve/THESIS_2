@@ -1,0 +1,22 @@
+{
+    "model_architecture": "ssdlite320_mobilenet_v3_large",
+    "dataset": "Roboflow VOC",
+    "num_classes": 4,
+    "class_names": [
+        "__background__",
+        "nsfw",
+        "safe",
+        "gore"
+    ],
+    "input_size": 640,
+    "batch_size": 32,
+    "epochs": 150,
+    "optimizer": {
+        "type": "SGD",
+        "lr": 0.002,
+        "momentum": 0.9,
+        "weight_decay": 0.0005
+    },
+    "scheduler": "CosineAnnealingLR",
+    "device": "cuda"
+}

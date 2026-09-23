@@ -1,0 +1,8 @@
+              precision    recall  f1-score   support
+
+        safe       0.87      0.94      0.90       155
+        nsfw       0.91      0.83      0.87       125
+
+    accuracy                           0.89       280
+   macro avg       0.89      0.88      0.89       280
+weighted avg       0.89      0.89      0.89       280

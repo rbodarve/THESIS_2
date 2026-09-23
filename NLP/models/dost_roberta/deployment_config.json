@@ -1,0 +1,11 @@
+{
+    "model_version": "1.0.0",
+    "base_model": "dost-asti/RoBERTa-tl-sentiment-analysis",
+    "decision_threshold": 0.5,
+    "max_length": 128,
+    "num_labels": 2,
+    "id2label": {
+        "0": "Safe",
+        "1": "NSFW"
+    }
+}

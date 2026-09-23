@@ -1,0 +1,42 @@
+DOST RoBERTa Tagalog NSFW Detection Model Evaluation
+======================================================================
+
+Model Architecture: RoBERTa-tl (DOST-ASTI, fine-tuned)
+Task: Binary Classification (Safe vs NSFW)
+Evaluation Set: Validation
+
+NOTE: threshold was tuned AND scored on this same validation set,
+so these numbers are optimistically biased. Use the TEST set as the
+unbiased estimate of generalization performance.
+
+Calibration:
+----------------------------------------------------------------------
+Optimized Threshold: 0.5000 (Tuned on Validation)
+Target Metric:      Max F1 (NSFW)
+----------------------------------------------------------------------
+
+Key Metrics (Validation):
+----------------------------------------------------------------------
+Overall Accuracy:   0.9056
+Macro Precision:    0.9114
+Macro Recall:       0.8997
+Macro F1-Score:     0.9034
+NSFW F1-Score:      0.8889
+AUROC:              0.9437
+PR-AUC (AUPRC):     0.9453
+----------------------------------------------------------------------
+
+Classification Report:
+              precision    recall  f1-score   support
+
+        Safe     0.8822    0.9567    0.9180       462
+        NSFW     0.9405    0.8427    0.8889       375
+
+    accuracy                         0.9056       837
+   macro avg     0.9114    0.8997    0.9034       837
+weighted avg     0.9083    0.9056    0.9049       837
+
+
+Confusion Matrix:
+[[442  20]
+ [ 59 316]]

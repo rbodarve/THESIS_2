@@ -1,0 +1,19 @@
+
+==================== Evaluating Validation Set (2416 images) ====================
+
+--- Validation Performance Metrics ---
+Latency (Avg):        3.31 ms/img
+Inference Throughput: 302.32 samples/sec
+Overall Throughput:   129.28 samples/sec (w/ dataloading)
+
+--- Validation Accuracy Metrics ---
+Class           Images     Labels     P          R          mAP@.5     mAP@.5:.95
+-----------------------------------------------------------------------------------------------
+Gore            2416       1348       0.866      0.777      0.833      0.435
+nsfw            2416       1830       0.680      0.570      0.540      0.209
+safe            2416       776        0.661      0.655      0.560      0.205
+-----------------------------------------------------------------------------------------------
+OVERALL         2416       3954       0.736      0.667      0.644      0.283
+
+Checking for Test set...
+Test dataset is empty.

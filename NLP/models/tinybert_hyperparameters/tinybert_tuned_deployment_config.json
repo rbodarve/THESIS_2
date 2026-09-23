@@ -1,0 +1,14 @@
+{
+  "decision_threshold": 0.5,
+  "max_length": 128,
+  "base_model": "huawei-noah/TinyBERT_General_4L_312D",
+  "num_labels": 2,
+  "best_params": {
+    "learning_rate": 4.9819392530552765e-05,
+    "batch_size": 32,
+    "dropout": 0.2794032199791374,
+    "warmup_ratio": 0.03995119417771839,
+    "weight_decay": 0.192209798052415
+  },
+  "language_note": "English-pretrained TinyBERT base; not Tagalog-native"
+}

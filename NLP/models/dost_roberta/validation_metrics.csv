@@ -1,0 +1,2 @@
+set,accuracy,macro_precision,macro_recall,macro_f1,nsfw_f1,roc_auc,pr_auc,optimal_threshold,threshold_tuned_on_this_set
+Validation,0.9056152927120669,0.9113558597091531,0.8996883116883116,0.9034267912772586,0.8888888888888888,0.9436623376623376,0.9452586928538275,0.5,True

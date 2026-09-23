@@ -1,0 +1,7 @@
+{
+  "decision_threshold": 0.5,
+  "max_length": 128,
+  "base_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "num_labels": 2,
+  "language_note": "Multilingual MiniLM base (50+ langs incl. Filipino/Tagalog); largest base in study"
+}

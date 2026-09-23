@@ -29,6 +29,7 @@
   - [Models](#cv-models)
   - [Dataset](#cv-dataset)
   - [Pipeline](#cv-pipeline)
+  - [Results](#cv-results)
 - [Getting Started](#-getting-started)
 - [Usage](#-usage)
 - [Outputs & Artifacts](#-outputs--artifacts)
@@ -81,7 +82,8 @@ THESIS_2/
     ├── yolov26n.ipynb                      # YOLOv26
     ├── rf_detr_nano.ipynb / …_hyperparameters.ipynb
     ├── efficientdet.ipynb / …_hyperparameters.ipynb
-    └── mobilenetssd_torch.ipynb / …_hyperparameters.ipynb
+    ├── mobilenetssd_torch.ipynb / …_hyperparameters.ipynb
+    └── results/                            # Metrics + plots per detector (one dir per model)
 ```
 
 > Datasets, archives (`*.zip`), virtualenvs, secrets, and WSL `*:Zone.Identifier` cruft are
@@ -110,6 +112,8 @@ models are trained from scratch; the rest fine-tune pretrained (mostly Tagalog-a
 
 All notebooks share the same `cleaned_data.csv`, the same **70 / 15 / 15** train/val/test split, an
 F1-optimized decision threshold calibrated on validation, and **TFLite** export for deployment.
+The exception is **MobileBERT**, which splits **70 / 25 / 5** (test n = 280), so its numbers are not
+directly comparable.
 
 **Key features:**
 
@@ -164,14 +168,35 @@ per-class and AUC metrics are saved to each model's `*_test_metrics.csv`):
 | LSTM — HPO | 0.8937 | 0.8918 |
 | BiLSTM — baseline | 0.8853 | 0.8837 |
 
-Among the transformers, the **DOST-RoBERTa** notebooks are the strongest (HPO ≈ **0.91** test
-accuracy). Per-model metrics for every architecture are written to that notebook's own
-`*_test_metrics.csv` / `*_classification_report.csv`.
+Transformer results on the same test set (n = 837), threshold **0.50**. Metric files live in each
+model's `NLP/models/<model>/` directory; the DOST-RoBERTa HPO row is read from notebook output:
+
+| Model | Accuracy | Macro-F1 |
+| --- | :---: | :---: |
+| **Multilingual MiniLM — HPO** 🏆 | **0.9188** | **0.9175** |
+| Multilingual MiniLM — baseline | 0.9140 | 0.9124 |
+| DOST RoBERTa — HPO | 0.9128 | 0.9110 |
+| DOST RoBERTa — baseline | 0.8961 | 0.8930 |
+| TinyBERT — baseline | 0.8853 | 0.8829 |
+| TinyBERT — HPO | 0.8757 | 0.8736 |
+| MobileBERT — baseline ¹ | 0.8893 | 0.8869 |
+| MobileBERT — HPO ¹ | 0.5571 | 0.3721 |
+
+¹ Different split (test n = 280, 155 `safe` / 125 `nsfw`). The HPO run collapsed to predicting
+almost everything as `safe` (NSFW recall 0.02).
+
+RoBERTa Tagalog and DistilBERT Tagalog have **no results yet**: the RoBERTa Tagalog notebooks have not
+been run, and the only DistilBERT Tagalog run was interrupted during model download.
 
 **Takeaways (recurrent models):** **BiLSTM — HPO leads**, showing that bidirectionality and
 hyperparameter search together can outperform simple defaults. The plain LSTM baseline trails closely
 in second. All models overfit the ~3,900-sample training set (train accuracy ≈ 0.99 by epoch 3–5);
 the data size, not the architecture, remains the binding constraint.
+
+**Takeaways (transformers):** **Multilingual MiniLM — HPO** is the best NLP model overall, just ahead
+of DOST RoBERTa — HPO and about 1.7 points above the best recurrent model. Hyperparameter search
+helped MiniLM and DOST RoBERTa but *hurt* TinyBERT and broke MobileBERT, so tuned runs are not
+automatically better than baselines.
 
 > Re-running notebooks may shift the last digits due to nondeterministic GPU training.
 
@@ -187,13 +212,16 @@ Multiple detector families are benchmarked, most across scale (`n`/`s`) and inpu
 | Family | Notebooks | Framework |
 | --- | --- | --- |
 | **YOLOv5** | `yolov5{n,s}-{320,640}` (4) | cloned `ultralytics/yolov5` repo |
-| **YOLOv10** | `yolov10n`, `yolov10n(1)` (tuned) | `ultralytics` (`YOLOv10`) |
-| **YOLOv11** | `yolov11n`, `yolov11s`, `yolov11{n-320,n-768,s-640,s_320}` | `ultralytics` |
+| **YOLOv10** | `yolov10n`, `yolov10n(1)` (tuned) | `THU-MIG/yolov10` (`ultralytics` fork, `YOLOv10`) |
+| **YOLOv11** | `yolov11n`, `yolov11s`, `yolov11{n-320,n-768,s-640,s_640,s_320}` | `ultralytics` |
 | **YOLOv12** | `yolov12n`, `yolov12n-320`, `yolov12n-640` | `ultralytics` |
 | **YOLOv26** | `yolov26n` | `ultralytics` (latest, YOLO26 support) |
-| **RF-DETR (nano)** | `rf_detr_nano` (+ `_hyperparameters`) | RF-DETR |
-| **EfficientDet** | `efficientdet` (+ `_hyperparameters`) | — |
+| **RF-DETR (nano)** | `rf_detr_nano` (+ `_hyperparameters`) | `rfdetr==1.2.1` |
+| **EfficientDet** | `efficientdet` (+ `_hyperparameters`) | PyTorch / torchvision |
 | **MobileNet-SSD** | `mobilenetssd_torch` (+ `_hyperparameters`) | PyTorch |
+
+The YOLOv5 notebooks, `rf_detr_nano_hyperparameters`, and `mobilenetssd_torch_hyperparameters` have
+no saved outputs yet (not run).
 
 <a id="cv-dataset"></a>
 
@@ -201,7 +229,9 @@ Multiple detector families are benchmarked, most across scale (`n`/`s`) and inpu
 
 The detectors train on the Roboflow **`erotica-detection`** project (workspace `renaire-odarve`),
 downloaded per-notebook via the Roboflow API in the format each framework expects (`yolov5`,
-`yolov11`, COCO, etc.). Dataset archives are git-ignored and re-downloaded on demand.
+`yolov11`, COCO, etc.). It has three classes: **`Gore`**, **`nsfw`**, and **`safe`** (the validation
+split used for EfficientDet has 2,416 images / 3,954 boxes). Dataset archives are git-ignored and
+re-downloaded on demand.
 
 > ⚠️ The training notebooks reference specific Roboflow dataset **versions** and pull a
 > `ROBOFLOW_API_KEY` from Colab secrets. Pin a single dataset version across models when comparing
@@ -212,8 +242,28 @@ downloaded per-notebook via the Roboflow API in the format each framework expect
 ### Pipeline
 
 Each notebook follows: install deps → download the dataset → train → visualize curves / confusion
-matrix → evaluate → run sample inference → **export to TFLite** and zip artifacts. The notebooks are
+matrix → evaluate → run sample inference → export and zip artifacts. The YOLO notebooks export to **TFLite**;
+EfficientDet, MobileNet-SSD, and RF-DETR export to **ONNX**. The notebooks are
 authored for **Google Colab (GPU)**.
+
+<a id="cv-results"></a>
+
+### Results
+
+Metrics extracted to `Computer_Vision/results/<model>/`. YOLO rows are the best epoch (highest
+mAP@.5:.95) from `results.csv`, out of 150 epochs:
+
+| Model | Split | Precision | Recall | mAP@.5 | mAP@.5:.95 |
+| --- | :---: | :---: | :---: | :---: | :---: |
+| **YOLOv12n** 🏆 | val | 0.764 | 0.717 | **0.753** | **0.376** |
+| YOLOv26n | val | 0.762 | 0.703 | 0.742 | 0.371 |
+| EfficientDet-D0 — baseline | val | 0.739 | 0.671 | 0.659 | 0.286 |
+| EfficientDet-D0 — HPO | val | 0.736 | 0.667 | 0.644 | 0.283 |
+| YOLOv11n | val | 0.641 | 0.576 | 0.598 | 0.303 |
+| MobileNet-SSD (v3-large) | test | — | — | 0.566 | 0.247 |
+
+> ⚠️ These rows are not a clean comparison: most are **validation** numbers (the EfficientDet test
+> split was empty), and the notebooks may use different Roboflow dataset versions.
 
 ## 🚀 Getting Started
 
@@ -233,11 +283,15 @@ cd THESIS_2
 # NLP — recurrent notebooks
 pip install tensorflow pandas numpy scikit-learn matplotlib seaborn keras-tuner unidecode emoji
 
-# NLP — transformer notebooks
-pip install torch transformers datasets
+# NLP — transformer notebooks (HPO variants also need optuna)
+pip install torch transformers accelerate datasets optuna
+pip install onnxscript "optimum[onnxruntime]" onnxconverter-common litert-torch torchao
 
-# Computer Vision
+# Computer Vision — YOLO (YOLOv10 installs git+https://github.com/THU-MIG/yolov10.git instead)
 pip install ultralytics supervision roboflow onnx onnx2tf
+
+# Computer Vision — EfficientDet / MobileNet-SSD / RF-DETR
+pip install albumentations torchmetrics onnx onnxruntime onnxscript optuna "rfdetr==1.2.1"
 ```
 
 > 💡 The `*_hyperparameters.ipynb` and CV notebooks use `!pip install` and a `google.colab` download
@@ -282,11 +336,18 @@ Each **NLP** notebook writes to its own directory under `NLP/models/`:
 | `*_confusion_matrix.png` | Confusion matrix. |
 | `training_history.png` / `.csv` | Accuracy / loss curves over epochs. |
 
-The NLP HPO notebooks additionally persist their Keras Tuner study under `NLP/tuning_results/<study>/`
-with a ranked trial summary (`hpo_trials*.csv`).
+The recurrent HPO notebooks additionally persist their Keras Tuner study under `NLP/tuning_results/<study>/`
+with a ranked trial summary (`hpo_trials*.csv`). The transformer HPO notebooks use **Optuna** instead
+and keep their trials inside their own model directory
+(`<model>_hyperparameters/tuning_results/hpo_trials_*.csv` and `models/*_hpo_results.json`).
+
+The **transformer** directories (`dost_roberta/`, `multilingual_minilm*/`, `tinybert*/`,
+`mobilebert*/`) hold metrics, reports, plots, and deployment configs only. Their weights and
+TFLite/ONNX exports are too large for the repo and stay in the Colab download zips.
 
 Each **CV** notebook produces an Ultralytics/framework `runs/` directory (weights, curves, confusion
-matrix), a TFLite export, and a zipped `*_results.zip` / `*_saved_model.zip` for download.
+matrix), a TFLite export, and a zipped `*_results.zip` / `*_saved_model.zip` for download. The metrics
+and plots from those zips are kept in `Computer_Vision/results/<model>/`.
 
 ## 📄 License
 

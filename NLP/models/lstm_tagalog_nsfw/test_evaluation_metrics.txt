@@ -13,26 +13,26 @@ Target Metric:      Max F1 (NSFW)
 
 Key Metrics (Test):
 ----------------------------------------------------------------------
-Overall Accuracy:   0.8973
-Macro Precision:    0.8989
-Macro Recall:       0.8934
-Macro F1-Score:     0.8955
-NSFW F1-Score:      0.8819
-AUROC:              0.9403
-PR-AUC (AUPRC):     0.9507
+Overall Accuracy:   0.8984
+Macro Precision:    0.9003
+Macro Recall:       0.8945
+Macro F1-Score:     0.8967
+NSFW F1-Score:      0.8831
+AUROC:              0.9414
+PR-AUC (AUPRC):     0.9509
 ----------------------------------------------------------------------
 
 Classification Report:
               precision    recall  f1-score   support
 
-        Safe     0.8884    0.9307    0.9091       462
-        NSFW     0.9093    0.8560    0.8819       375
+        Safe     0.8887    0.9329    0.9102       462
+        NSFW     0.9119    0.8560    0.8831       375
 
-    accuracy                         0.8973       837
-   macro avg     0.8989    0.8934    0.8955       837
-weighted avg     0.8978    0.8973    0.8969       837
+    accuracy                         0.8984       837
+   macro avg     0.9003    0.8945    0.8967       837
+weighted avg     0.8991    0.8984    0.8981       837
 
 
 Confusion Matrix:
-[[430  32]
+[[431  31]
  [ 54 321]]
